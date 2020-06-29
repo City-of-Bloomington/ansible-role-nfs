@@ -1,0 +1,12 @@
+---
+- name: 'Install NFS'
+  apt:
+    name: 'nfs-kernel-server'
+
+- name: 'Configure exports'
+  template:
+    src: 'exports'
+    dest: '/etc/exports'
+  when:   "nfs_exports != ''"
+  notify: 'nfs_reload'
+...
