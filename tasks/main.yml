@@ -9,4 +9,9 @@
     dest: '/etc/exports'
   when:   "nfs_exports != ''"
   notify: 'nfs_reload'
+
+- name: 'Configure firewall'
+  ufw:
+    rule: 'allow'
+    port: 'nfs'
 ...
